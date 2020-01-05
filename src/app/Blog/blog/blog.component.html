@@ -1,0 +1,56 @@
+<app-header></app-header>
+<!--================Home Banner Area =================-->
+<section class="home_banner_area blog_banner">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="blog_b_text text-center">
+                <h2>Dude You’re Getting
+                    <br /> a Telescope</h2>
+                <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first</p>
+                <a class="white_bg_btn" href="#">View More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area ===============-->
+
+ <!--================Blog Categorie Area =================-->
+ <section class="blog_categorie_area">
+    <div class="container">
+        <div class="row">
+                <div *ngFor="let blog of blogs" class="col-lg-3" style="text-align: center; margin-bottom: 15px;">
+             
+                <div class="categories_post">
+              
+                    <img [src]="blog.thumbnailImageUrl" alt="blog.title" style="height:200px; width: 320px;">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                                <a (click)="gotoDetails(blog.id)" >
+                                <h5>{{blog.title}}</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>{{blog.subtitle}}</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div style="justify-content: space-between; display: flex;">
+                    <a routerLink="update-blog/{{blog.id}}" routerLinkActive="active">
+                        <button type="button" class="btn submit_btn">UPDATE</button>
+                    </a>
+                    <button 
+                        type="button" 
+                        class="btn delete_btn"  
+                        (click)="deleteBlog(blog.id)"
+                    > DELETE
+                    </button>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+</section>
+<!--================Blog Categorie Area =================-->
+

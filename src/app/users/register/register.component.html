@@ -1,0 +1,76 @@
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+					<h2>Login/Register</h2>
+					<div class="page_link">
+						<a href="index.html">Home</a>
+						<a href="register.html">Registration</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!--================End Home Banner Area =================-->
+    
+<!--================Login Box Area =================-->
+<section class="login_box_area p_120">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="../../../assets/img/login.jpg" alt="" style="height: 660px;" >
+						<div class="hover">
+							<h4>New to our website?</h4>
+							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+							<a class="main_btn" href="registration.html">Create an Account</a>
+						</div>
+					</div>
+				</div>
+                <div class="col-lg-6">
+                    <div class="login_form_inner" >
+                        <h3>Register in to enter</h3>
+                        <form [formGroup]="regForm"  (ngSubmit)="registration()" novalidate="novalidate" >
+                            <div class="col-md-12 form-group">
+								<input type="text" class="form-control" formControlName="username"  placeholder="Enter First Name" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }">
+								<div *ngIf="submitted && fval.username.errors" class="invalid-feedback"></div>
+                                <div *ngIf="fval.username.errors?.required">Username is required</div>
+                            </div>
+                            <div class="col-md-12 form-group">
+								<input type="password" class="form-control" formControlName="password" placeholder=" Enter Your Password"  [ngClass]="{ 'is-invalid': submitted && fval.password.errors }">
+								<div *ngIf="submitted && fval.password.errors" class="invalid-feedback"></div>
+								<div *ngIf="fval.password.errors.required">Password is required</div>
+                                <div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                
+                            <div class="col-md-12 form-group">
+								<input type="password" class="form-control" formControlName="confirmpassword" placeholder=" Enter Your  Confirm Password"  [ngClass]="{ 'is-invalid': submitted && fval.confirmpassword.errors }">
+								<div *ngIf="submitted && fval.confirmpassword.errors" class="invalid-feedback"></div>
+                                <div *ngIf="fval.confirmpassword.errors?.required">confirmpassword is required</div>
+                            </div>
+                            <div class="col-md-12 form-group">
+									<input type="text" class="form-control" formControlName="email"  placeholder=" Enter Your  Email "  [ngClass]="{ 'is-invalid': submitted && fval.email.errors }">
+									<div *ngIf="submitted && fval.email.errors" class="invalid-feedback"></div>
+                                <div *ngIf="submitted && fval.email.errors?.required">Email is required</div>
+                                </div>
+
+
+                            <div class="col-md-12 form-group">
+								<input type="text" class="form-control" formControlName="mobileno" placeholder=" Enter Your  Mobile No " [ngClass]="{ 'is-invalid': submitted && fval.mobileno.errors }">
+								<div *ngIf="submitted && fval.mobileno.errors" class="invalid-feedback"></div>
+								<div style="color: red;" *ngIf="submitted && fval.mobileno.errors?.required">Mobile Number is required</div>
+								<div *ngIf="submitted && fval.mobileno.errors?.minlength">Mobile Number must be at least 10 characters</div>
+                            </div>
+                            
+                            
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="btn submit_btn" [disabled]="loading">Sign In</button>
+								<span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

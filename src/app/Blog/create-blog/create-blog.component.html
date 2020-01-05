@@ -1,0 +1,68 @@
+    <!--================Contact Area =================-->
+    <section class="contact_area p_120">
+            <div class="container" style="text-align: center;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr/>
+                        <h1>CREATE BLOG POST</h1>
+                        <hr/>
+                        <form [formGroup]="myblogForm" (ngSubmit)="update ? updateBlog() : createNewBlog()" class="row contact_form" novalidate="novalidate">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+                              
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="title" placeholder="Enter Title">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="subtitle" placeholder="Enter subtitle">
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control" formControlName="createdDate" placeholder="Enter Title">
+                                </div>
+                                <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" name="thumbnailImageUrl" class="custom-file-input" (change)="showPreview($event)"
+                                                aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" name="bannerImageUrl" class="custom-file-input" (change)="showPreview($event)"
+                                            aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea class="form-control" formControlName="description" rows="1" placeholder="Enter Message"></textarea>
+                    </div>
+                </div>
+               
+            <div class="col-md-5 text-right">
+                <button type="submit" value="submit" class="btn submit_btn" [disabled]="myblogForm.invalid">
+                    {{update ? "Update" : "Add BLOG"}}
+                </button>
+            </div>
+            <div class="col-md-4 text-right">
+                    <button type="button" (click)="resetData()" class="btn submit_btn" >Reset</button>
+                </div>
+            </form>
+            <hr />
+            </div>
+            </div>
+            </div>
+        </section>
+        <!--================Contact Area =================-->

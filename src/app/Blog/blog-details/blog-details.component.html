@@ -1,0 +1,46 @@
+<app-header></app-header>
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Blog Details</h2>
+                <div class="page_link">
+                    <a href="index.html">Home</a>
+                    <a href="single-blog.html">Blog Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><br/>
+<hr/>
+<!--================End Home Banner Area =================-->
+
+ <!--================Blog Area =================-->
+
+    <div class="card mb-3" style="max-width: 540px; margin-left: 60px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]= "blogDetail.thumbnailImageUrl"class="card-img-top" style="margin-left: 4px; margin-top :4px;" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h1>User Profile</h1>
+                    <h6>User Name</h6>
+                  <p class="card-title">{{blogDetail.name || ""}}</p>
+                  <h6>TITLE</h6>
+                  <p class="card-text">{{blogDetail.title || ""}}</p>
+                  <h6> DESCRIPTION</h6>
+                  <p class="card-text">{{blogDetail.description || ""}}</p>
+                  <h6> SUBTITLE</h6>
+                  <p class="card-text">{{blogDetail.subtitle || ""}}</p>
+                  <h6>DATE</h6>
+                  <p class="card-text">{{blogDetail. createdDate || ""}}</p>
+                  <p class="card-text">{{blogDetail.createdby || ""}}</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+    
+
+<app-footer></app-footer>
+
