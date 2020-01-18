@@ -25,8 +25,8 @@ const routes: Routes = [
   },
   {
     path: "blogDetails/:id",
-    component: BlogDetailsComponent,
-    canActivate: [AuthGuard]
+    component: BlogDetailsComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: "contact",
@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: "create-new-blog",
     component: CreateBlogComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path:"blogs-list/update-blog/:id",  
@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path:'**',
+    component: LoginComponent
   }
 
 ];

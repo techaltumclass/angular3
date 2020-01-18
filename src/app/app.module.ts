@@ -19,6 +19,7 @@ import { UserService } from './users/user.service';
 import { AuthGuard } from './core/auth.guard';
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientModule } from '@angular/common/http';
+import { TestComponent } from './shared/test/test.component';
 
 
 
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactComponent,
     LoginComponent,
     CreateBlogComponent,
-    RegisterComponent
+    RegisterComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
