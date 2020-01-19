@@ -1,14 +1,9 @@
-import { NgModule, Component } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { BlogComponent } from "./Blog/blog/blog.component";
-import { BlogDetailsComponent } from "./Blog/blog-details/blog-details.component";
 import { ContactComponent } from "./contact/contact.component";
-import { CreateBlogComponent } from './Blog/create-blog/create-blog.component';
 import { RegisterComponent } from './users/register/register.component';
-import{LoginComponent} from './users/login/login.component'
-import { AuthGuard } from './core/auth.guard';
-
+import { LoginComponent } from './users/login/login.component'
 
 const routes: Routes = [
   {
@@ -16,41 +11,23 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "home",
-    component: HomeComponent
-  },
-  {
-    path: "blogs-list",
-    component: BlogComponent
-  },
-  {
-    path: "blogDetails/:id",
-    component: BlogDetailsComponent
-    // canActivate: [AuthGuard]
-  },
-  {
     path: "contact",
     component: ContactComponent
   },
   {
-    path: "create-new-blog",
-    component: CreateBlogComponent,
-    // canActivate: [AuthGuard]
+    path: 'register',
+    component: RegisterComponent,
   },
   {
-    path:"blogs-list/update-blog/:id",  
-    component:CreateBlogComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-     path:'register',
-     component:RegisterComponent,
+    path: 'blogs',
+    loadChildren: './Blog/blog.module#BlogModule'
   },
   {
-    path:'login',
-    component:LoginComponent
-  },
-  {
-    path:'**',
+    path: '**',
     component: LoginComponent
   }
 
@@ -60,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
