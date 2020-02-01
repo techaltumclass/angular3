@@ -12,24 +12,24 @@ export class BlogService {
     const blogs: Blog[] = [
       {
         id: uuidv1(),
-        name: "New Blog",
+        name: "My First Blog",
         title: "Title",
-        description: "descri",
+        description: "descri sdjfhgsdjf dkjfdjkfhsdkjfdjf f dksjf djks fksjfj f",
         subtitle: "sub title",
         createdDate: new Date(),
         createdby: 1,
-        thumbnailImageUrl: '../../../assets/img/blog/post-img1.jpg',
+        thumbnailImageUrl: '../../../assets/img/blog/c1.jpg',
         bannerImageUrl: '../../../assets/img/blog/cat-post/cat-post-3.jpg'
       },
       {
         id: uuidv1(),
-        name: "New Blog",
+        name: "My Second Blog",
         title: "Title",
         description: "descri",
         subtitle: "sub title",
         createdDate: new Date(),
         createdby: 1,
-        thumbnailImageUrl: '../../../assets/img/blog/feature-img1.jpg',
+        thumbnailImageUrl: '../../../assets/img/blog/c2.jpg',
         bannerImageUrl: '../../../assets/img/blog/cat-post/cat-post-3.jpg'
       }
     ];

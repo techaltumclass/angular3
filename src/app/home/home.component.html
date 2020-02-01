@@ -3,16 +3,15 @@
 <!--================Home Banner Area =================-->
 <section class="home_banner_area">
     <div class="overlay"></div>
-    <div class="banner_inner d-flex align-items-center">
+    <div  class="banner_inner d-flex align-items-center">
         <div class="container">
             <div class="banner_content row">
                 <div class="offset-lg-2 col-lg-8">
-                    <h3 [class]="activeClass">{{ pageTitle }}</h3>
-                    <p>{{ eventValue | json }}</p>
+                    <h3 appClickMessage [ngClass]="{'activeClass': isAllowed}">{{ pageTitle }}</h3>
+                    <p appClickMessage>{{ eventValue | json }}</p>
                     <a class="white_bg_btn" href="#" (click)="showAlert($event)">View Collection</a>
                 </div>
                 <br>
-                
             </div>
         </div>
     </div>
@@ -22,20 +21,29 @@
 <section class="subscription-area section_gap">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title text-center">
-                    <h2>Subscribe for Our Newsletter</h2>
-                    <span>We won’t send any kind of spam</span>
+            <div *ngIf="isAllowed" class="col-lg-8">
+                <div _ngcontent-cly-c3="" class="col-lg-3 col-md-6 col-sm-6">
+                    <div  class="single-footer-widget instafeed">
+                        <h6 class="footer_title">Instagram Feed</h6>
+                        <div class="list instafeed d-flex flex-wrap">
+                            <div *ngFor="let item of myBlogs">
+                                <h4> {{item.name}}</h4>
+                                <h4> {{item.description}}</h4>
+                                <img alt="" [src]="item.thumbnailImageUrl">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div *ngIf="isAllowed === 'N'" class="row justify-content-center">
             <div class="col-lg-6">
                 <div id="mc_embed_signup">
-                    <form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01"
-                     method="get" class="subscription relative">
-                        <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'"
-                         required="">
+                    <form target="_blank" novalidate
+                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01"
+                        method="get" class="subscription relative">
+                        <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Email address'" required="">
                         <!-- <div style="position: absolute; left: -5000px;">
                             <input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
                         </div> -->

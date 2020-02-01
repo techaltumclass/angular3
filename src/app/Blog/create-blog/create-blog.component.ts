@@ -5,7 +5,8 @@ import {
   FormBuilder,
   FormGroup,
   FormControl,
-  Validators
+  Validators,
+  NgModel
 } from "@angular/forms";
 import { BlogService } from "../blog.service";
 import { Blog } from "../blog.model";
@@ -21,6 +22,7 @@ export class CreateBlogComponent implements OnInit {
   blogs: Blog[] ;
   dummy: Array<any>;
   update:boolean;
+  model: NgModel
   id: string;
   // submitted=false;
   constructor(
