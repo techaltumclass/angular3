@@ -7,8 +7,8 @@
         <div class="container">
             <div class="banner_content row">
                 <div class="offset-lg-2 col-lg-8">
-                    <h3 appClickMessage [ngClass]="{'activeClass': isAllowed}">{{ pageTitle }}</h3>
-                    <p appClickMessage>{{ eventValue | json }}</p>
+                    <h3 #titleEl [ngClass]="{'activeClass': isAllowed}" >{{ pageTitle }}</h3>
+                    <p (click)="onClickHeading($event)">{{ eventValue | json }}</p>
                     <a class="white_bg_btn" href="#" (click)="showAlert($event)">View Collection</a>
                 </div>
                 <br>
@@ -22,14 +22,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div *ngIf="isAllowed" class="col-lg-8">
-                <div _ngcontent-cly-c3="" class="col-lg-3 col-md-6 col-sm-6">
+                <div _ngcontent-cly-c3="" class="col-lg-6 col-md-6 col-sm-6">
                     <div  class="single-footer-widget instafeed">
                         <h6 class="footer_title">Instagram Feed</h6>
                         <div class="list instafeed d-flex flex-wrap">
-                            <div *ngFor="let item of myBlogs">
-                                <h4> {{item.name}}</h4>
-                                <h4> {{item.description}}</h4>
-                                <img alt="" [src]="item.thumbnailImageUrl">
+                            <div *ngFor="let myblog of myBlogs">
+                                <h4> {{myblog.name}} </h4>
+                                <!-- <h4> {{item.description}}</h4> -->
+                                <img [alt]="myblog.name" [src]="myblog.thumbnailImageUrl">
                             </div>
                         </div>
                     </div>
@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+
 </section>
 <!--================ End Subscription Area ================-->
 

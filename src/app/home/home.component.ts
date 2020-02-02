@@ -1,33 +1,14 @@
-import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, HostListener, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { BlogService } from '../Blog/blog.service';
 import { Blog } from '../Blog/blog.model';
+import { BlogComponent } from '../Blog/blog/blog.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-
-  ngOnInit() {
-    this.pageTitle = "This is home Page Title. On Init";
-    console.log('ngOnInit');
-  }
-
-  // ngOnChanges(): void {
-  //   console.log('ngOnChanges');
-  // }
-
-  // ngAfterViewInit(): void {
-  //   this.pageTitle = "This is home Page Title. After View Init";
-  //   // this.isAllowed = 'Y';
-  //   console.log('ngAfterViewInit');
-  // }
-
-  // ngAfterContentInit(): void {
-  //   console.log('ngAfterContentInit');
-  // }
-
+export class HomeComponent implements OnInit, AfterViewInit {
 
 
   pageTitle: string;  // just declaration
@@ -36,15 +17,35 @@ export class HomeComponent implements OnInit {
   eventValue: any = 'No event occured.';
   myBlogs: Blog[];
   isAllowed: string;
-  
-  constructor(private service: BlogService) {
+
+  @ViewChild('titleEl', { static: true }) title: ElementRef;
+
+  ngOnInit() {
+    this.pageTitle = "This is home Page Title. On Init";
+    this.isAllowed = 'Y';
+    console.log(this.title);
+    this.renderer.setStyle(this.title.nativeElement, 'color', '#a8e01f');
+  }
+
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+  }
+
+  constructor(private service: BlogService, private readonly renderer: Renderer2) {
 
     this.myBlogs = service.getBlogs();
-    this.isAllowed = 'Y';
     console.log('constructor called Home.');
     this.pageTitle = "This is home Page Title.";
     this.myClass = 'active-class';
     this.activeClass = 'my-random-class';
+  }
+
+  onClickHeading(event) {
+    console.log(event.toElement);
+    const myElement = event.currentTarget;
+    this.renderer.setStyle(myElement, 'color', '#a8e01f');
+    this.renderer.setStyle(this.title.nativeElement, 'color', 'white');
   }
 
   showAlert(event) {
