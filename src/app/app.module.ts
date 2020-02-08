@@ -28,10 +28,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BlogModule,
+    SharedModule
    
   ],
   exports: [],

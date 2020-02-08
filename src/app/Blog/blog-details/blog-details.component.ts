@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,9 +6,9 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.scss']
 })
-export class BlogDetailsComponent implements OnInit {
+export class BlogDetailsComponent {
 
-  blogDetail: {};
+  @Input('data-parent') blogDetail: any;
   blogs: Array<any> ;
 
   constructor(private activatedRoute: ActivatedRoute) {

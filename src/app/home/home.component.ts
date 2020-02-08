@@ -32,10 +32,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log('ngAfterViewInit');
   }
 
-  constructor(private service: BlogService, private readonly renderer: Renderer2) {
+  constructor(private readonly renderer: Renderer2) {
 
-    this.myBlogs = service.getBlogs();
-    console.log('constructor called Home.');
+    // this.myBlogs = service.getBlogs();
     this.pageTitle = "This is home Page Title.";
     this.myClass = 'active-class';
     this.activeClass = 'my-random-class';

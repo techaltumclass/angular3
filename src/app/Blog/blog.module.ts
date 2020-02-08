@@ -7,10 +7,11 @@ import { BlogService } from './blog.service';
 import { RouterModule } from '@angular/router';
 import { BlogRoutingModule } from './blog-routing.module';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [BlogComponent, BlogDetailsComponent, CreateBlogComponent],
-    imports: [FormsModule, ReactiveFormsModule, CommonModule, BlogRoutingModule],
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, BlogRoutingModule, SharedModule],
     providers: [BlogService]
 }
 )
