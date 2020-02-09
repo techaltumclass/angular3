@@ -16,6 +16,7 @@ const routes: Routes = [
     {
         path: "create-new-blog",
         component: CreateBlogComponent
+        
     }
 
 ];
