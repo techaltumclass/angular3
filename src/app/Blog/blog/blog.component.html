@@ -41,5 +41,5 @@
 </section>
 <!--================Blog Categorie Area =================-->
 
-<app-blog-details *ngIf="isViewClick" [data-parent]="childData"></app-blog-details>
+<app-blog-details *ngIf="isViewClick" (childEvent)="ChildEvent($event)" [data-bind]="childData"></app-blog-details>
 

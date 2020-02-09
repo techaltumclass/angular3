@@ -15,11 +15,10 @@ export class BlogComponent implements OnInit, AfterViewInit {
   childData: any;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
     private readonly blogData: BlogService,
     private router: Router
   ) {
-    console.log(JSON.parse(window.localStorage.getItem("blogs")));
+    // console.log(JSON.parse(window.localStorage.getItem("blogs")));
 
   }
 
@@ -30,10 +29,10 @@ export class BlogComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
- 
+
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.blogs = this.blogData.getBlogs();
 
   }
@@ -47,5 +46,10 @@ export class BlogComponent implements OnInit, AfterViewInit {
     this.blogs = this.blogs.filter(data => data.id !== id);
 
     window.localStorage.setItem("blogs", JSON.stringify(this.blogs));
+  }
+
+  ChildEvent(event) {
+    console.log(event);
+    // this.isViewClick = false;
   }
 }
