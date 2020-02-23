@@ -2,6 +2,8 @@ export class Blog {
   id: number;
   name: string;
   title: string;
+  firstname?: string;
+  lastname?: string;
   subtitle: string;
   createdDate?: Date;
   description: string;

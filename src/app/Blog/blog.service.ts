@@ -2,11 +2,19 @@ import { Injectable } from "@angular/core";
 import { Blog } from "./blog.model";
 import { Title } from "@angular/platform-browser";
 import uuidv1 from "uuid/v1";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class BlogService {
     myvariable: string;
-  constructor() {}
+  constructor( private http: HttpClient) {}
+
+  submitBlog(blog: Blog): Observable<any> {
+
+    return this.http.post('http://localhost:65114/api/bookings/add', blog);
+
+  }
 
    getBlogs(): Blog[] {
     const blogs: Blog[] = [

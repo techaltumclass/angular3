@@ -22,12 +22,13 @@ export class CreateBlogComponent implements OnInit {
   blogs: Blog[];
   dummy: Array<any>;
   update: boolean;
+  blogName: string;
   model: NgModel;
   id: string;
   submitted = false;
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly blogData: BlogService,
+    private readonly service: BlogService,
     private activatedRoute: ActivatedRoute
   ) {
     this.blogs = JSON.parse(window.localStorage.getItem("blogs"));
@@ -64,6 +65,10 @@ export class CreateBlogComponent implements OnInit {
     });
   }
 
+  changeValue(event){
+    this.myblogForm.patchValue({title: 'new title'});
+  }
+
   get f(): any {
     return this.myblogForm.controls;
   }
@@ -91,9 +96,16 @@ export class CreateBlogComponent implements OnInit {
     }
 
     // alert("SUCCESS!!:-)\n\n" + JSON.stringify(this.myblogForm.value, null, 4));
-    this.blogs.push(this.myblogForm.value);
+    //this.blogs.push(this.myblogForm.value);
+    this.service.submitBlog(this.myblogForm.value)
+    .subscribe((res: any) => {
+      console.log(res);
+    });
     window.localStorage.setItem("blogs", JSON.stringify(this.blogs));
   }
+
+
+
   updateBlog() {
     if (this.myblogForm.invalid) {
       return;

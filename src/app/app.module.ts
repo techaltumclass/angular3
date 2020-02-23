@@ -31,7 +31,6 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     SharedModule
    
   ],
