@@ -3,20 +3,41 @@ import { Blog } from "./blog.model";
 import { Title } from "@angular/platform-browser";
 import uuidv1 from "uuid/v1";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { throwError, fromEvent, of, Observable } from 'rxjs';
+import { catchError, tap, switchMap, mergeMap, concatMap, exhaustMap, map } from 'rxjs/operators';
 
 @Injectable()
 export class BlogService {
-    myvariable: string;
-  constructor( private http: HttpClient) {}
-
+  myvariable: string;
+  baseUrl: string = 'https://health-iq.in/api/'
+  constructor(private http: HttpClient) { }
+  
   submitBlog(blog: Blog): Observable<any> {
 
     return this.http.post('http://localhost:65114/api/bookings/add', blog);
 
   }
 
-   getBlogs(): Blog[] {
+  getBlogsData(): any {
+    return this.http.get(this.baseUrl + 'services/data')
+      .pipe(map((x: APIResponse) => {
+        console.log(x);
+        if (x.IsSuccess)
+          return x.SingleResult;
+      }),
+        catchError(err => {
+          console.log('Handling error locally and rethrowing it...', err);
+          return throwError(err);
+        })
+      )
+  }
+
+  getBlogsPromise() {
+    let apiURL = this.baseUrl + 'services/data';
+    return this.http.get(apiURL).toPromise();
+  }
+
+  getBlogs(): Blog[] {
     const blogs: Blog[] = [
       {
         id: uuidv1(),
@@ -46,4 +67,14 @@ export class BlogService {
     window.localStorage.setItem("blogs", JSON.stringify(blogs))
     return blogs;
   }
+}
+
+
+export class APIResponse {
+  IsSuccess: boolean;
+  Message: string;
+  StatusCode: string;
+  FailedValidations: any;
+  Result: any;
+  SingleResult: any;
 }

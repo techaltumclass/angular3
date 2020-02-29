@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, AfterViewInit, AfterContentInit, HostListener, ViewChild, Renderer2, ElementRef } from '@angular/core';
-import { BlogService } from '../Blog/blog.service';
+import { BlogService, APIResponse } from '../Blog/blog.service';
 import { Blog } from '../Blog/blog.model';
 import { BlogComponent } from '../Blog/blog/blog.component';
 
@@ -17,10 +17,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   eventValue: any = 'No event occured.';
   myBlogs: Blog[];
   isAllowed: string;
+  isError = false;
 
   @ViewChild('titleEl', { static: true }) title: ElementRef;
 
   ngOnInit() {
+    this.getBlogs();
     this.pageTitle = "This is home Page Title. On Init";
     this.isAllowed = 'Y';
     console.log(this.title);
@@ -32,12 +34,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log('ngAfterViewInit');
   }
 
-  constructor(private readonly renderer: Renderer2) {
+  constructor(private readonly renderer: Renderer2, private readonly service: BlogService) {
 
-    // this.myBlogs = service.getBlogs();
     this.pageTitle = "This is home Page Title.";
     this.myClass = 'active-class';
     this.activeClass = 'my-random-class';
+  }
+
+  getBlogs() {
+    this.myBlogs = this.service.getBlogsData()
+    .subscribe((res) => {
+      console.log(res);
+      this.myBlogs = res;
+      
+    },
+    err => console.log('HTTP Error', err))
   }
 
   onClickHeading(event) {

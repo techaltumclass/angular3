@@ -17,45 +17,38 @@
     </div>
 </section>
 <!--================End Home Banner Area =================-->
-<!--================ Subscription Area ================-->
-<section class="subscription-area section_gap">
+
+<section class="blog_categorie_area">
     <div class="container">
-        <div class="row justify-content-center">
-            <div *ngIf="isAllowed" class="col-lg-8">
-                <div _ngcontent-cly-c3="" class="col-lg-6 col-md-6 col-sm-6">
-                    <div  class="single-footer-widget instafeed">
-                        <h6 class="footer_title">Instagram Feed</h6>
-                        <div class="list instafeed d-flex flex-wrap">
-                            <div *ngFor="let myblog of myBlogs">
-                                <h4> {{myblog.name}} </h4>
-                                <!-- <h4> {{item.description}}</h4> -->
-                                <img [alt]="myblog.name" [src]="myblog.thumbnailImageUrl">
-                            </div>
+        <div class="row">
+<div *ngIf="isError"> <span> There is error</span></div>
+                <div *ngFor="let blog of myBlogs" class="col-lg-3" style="text-align: center; margin-bottom: 15px;">
+             
+                <div class="categories_post">
+              
+                    <img [src]="blog.ImageUrl" alt="blog.title" style="height:200px; width: 320px;">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                                <a (click)="gotoDetails(blog.id)" >
+                                <h5>{{blog.Name}}</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>{{blog.CreatedDate}}</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div *ngIf="isAllowed === 'N'" class="row justify-content-center">
-            <div class="col-lg-6">
-                <div id="mc_embed_signup">
-                    <form target="_blank" novalidate
-                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01"
-                        method="get" class="subscription relative">
-                        <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Email address'" required="">
-                        <!-- <div style="position: absolute; left: -5000px;">
-                            <input type="text" name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="">
-                        </div> -->
-                        <button type="submit" class="newsl-btn">Get Started</button>
-                        <div class="info"></div>
-                    </form>
+                <br/>
+                <div style="justify-content: space-between; display: flex;">
+                  <a routerLink="blogs/blogDetails/{{blog.ID}}" routerLinkActive="active">
+                        <button type="button"  class="btn submit_btn">View</button>
+                     </a> 
+
                 </div>
             </div>
+           
         </div>
+        
     </div>
-
 </section>
-<!--================ End Subscription Area ================-->
 
 <app-footer></app-footer>

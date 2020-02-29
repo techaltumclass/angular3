@@ -13,6 +13,7 @@ import { AuthGuard } from './core/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogModule } from './Blog/blog.module';
 import { SharedModule } from './shared/shared.module';
+import { BlogService } from './Blog/blog.service';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SharedModule } from './shared/shared.module';
   exports: [],
   providers: [
     UserService,
-    AuthGuard
+    AuthGuard,
+    BlogService
   ],
   bootstrap: [AppComponent]
 })
