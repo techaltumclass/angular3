@@ -9,7 +9,7 @@ import { catchError, tap, switchMap, mergeMap, concatMap, exhaustMap, map } from
 @Injectable()
 export class BlogService {
   myvariable: string;
-  baseUrl: string = 'https://health-iq.in/api/'
+  baseUrl: string = 'http://localhost:65114/api/';
   constructor(private http: HttpClient) { }
   
   submitBlog(blog: Blog): Observable<any> {
@@ -24,11 +24,7 @@ export class BlogService {
         console.log(x);
         if (x.IsSuccess)
           return x.SingleResult;
-      }),
-        catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
-          return throwError(err);
-        })
+      })
       )
   }
 

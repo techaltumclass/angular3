@@ -10,10 +10,12 @@ import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component';
 import { UserService } from './users/user.service';
 import { AuthGuard } from './core/auth.guard';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BlogModule } from './Blog/blog.module';
 import { SharedModule } from './shared/shared.module';
 import { BlogService } from './Blog/blog.service';
+import { HttpErrorInterceptor } from './core/error.interceptor';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { BlogService } from './Blog/blog.service';
     ContactComponent,
     LoginComponent,
     RegisterComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -33,13 +35,21 @@ import { BlogService } from './Blog/blog.service';
     FormsModule,
     ReactiveFormsModule,
     SharedModule
-   
+
   ],
   exports: [],
   providers: [
     UserService,
     AuthGuard,
-    BlogService
+    BlogService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: HttpErrorInterceptor,
+    //   multi: true,
+    // },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

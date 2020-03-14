@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     if (this.service.login(this.lgForm.value)) {
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/");
     }
   }
 

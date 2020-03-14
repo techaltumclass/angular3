@@ -3,7 +3,9 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
+  CanActivateChild,
+  CanDeactivate
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { UserService } from "../users/user.service";

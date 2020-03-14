@@ -42,13 +42,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getBlogs() {
-    this.myBlogs = this.service.getBlogsData()
-    .subscribe((res) => {
-      console.log(res);
-      this.myBlogs = res;
-      
-    },
-    err => console.log('HTTP Error', err))
+    this.service.getBlogsData()
+      .subscribe((res) => {
+        console.log(res);
+        this.myBlogs = res;
+      },
+        err => console.log('HTTP Error', err))
   }
 
   onClickHeading(event) {

@@ -4,11 +4,13 @@ import { HomeComponent } from "./home/home.component";
 import { ContactComponent } from "./contact/contact.component";
 import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component'
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "contact",
