@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, canLoadService } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopularPostComponent } from './shared/popular-post/popular-post.component';
 import { HomeComponent } from './home/home.component';
@@ -42,6 +42,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
     UserService,
     AuthGuard,
     BlogService,
+    canLoadService,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: HttpErrorInterceptor,

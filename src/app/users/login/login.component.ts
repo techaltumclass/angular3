@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UserService } from "../user.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { APIResponse } from 'src/app/Blog/blog.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: "app-login",
@@ -14,6 +16,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginStatus = false;
   pachakges: any;
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedIn.asObservable();
   constructor(
     private readonly formbuilder: FormBuilder,
     private readonly router: Router,
@@ -23,24 +27,31 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.lgForm = this.formbuilder.group({
-      username: ["", Validators.required],
-      password: ["", [Validators.required, Validators.minLength(6)]]
+      email: ["", Validators.required],
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
   get fval() {
     return this.lgForm.controls;
   }
 
-  loginForm() {
+  submitLoginForm() {
     this.submitted = true;
     if (this.lgForm.invalid) {
       return;
     }
-    if (this.service.login(this.lgForm.value)) {
+    this.service.login(this.lgForm.value).subscribe((res:APIResponse) => {
+      if(res.IsSuccess){
+        this.isLoggedIn.next(true);
+        window.localStorage.setItem("isLoggedIn", 'true');
+        window.localStorage.setItem("userID", res.SingleResult.ID);
+      } else {
+        window.localStorage.setItem("isLoggedIn", 'false')
+      }
       this.router.navigateByUrl("/");
-    }
+    })
   }
 
   getPackages() {

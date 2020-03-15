@@ -11,16 +11,21 @@ import { Observable } from "rxjs";
 import { UserService } from "../users/user.service";
 
 @Injectable()
-export class AuthGuard implements CanActivate {
-  isLoggedIn = false;
-  constructor(private loggedInService: UserService, private router: Router) {}
+export class AuthGuard implements CanActivate, CanActivateChild {
+  isLogg = false;
+  constructor(private loggedInService: UserService, private router: Router) { }
+
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | import("@angular/router").UrlTree | Observable<boolean | import("@angular/router").UrlTree> | Promise<boolean | import("@angular/router").UrlTree> {
+    return true;
+  }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let url: string = state.url;
-    this.loggedInService.isLoggedIn$.subscribe(val => {
-      this.isLoggedIn = val;
-    });
-    if (!this.isLoggedIn) {
+    this.isLogg = window.localStorage.getItem("isLoggedIn") === 'true' ? true : false;
+    // this.loggedInService.isLoggedIn$.subscribe(val => {
+    //   this.isLogg = val;
+    // });
+    if (!this.isLogg) {
       this.router.navigate(["/login"], {
         queryParams: { returnUrl: state.url }
       });
@@ -29,6 +34,7 @@ export class AuthGuard implements CanActivate {
 
     return true;
   }
+
 
   checkLogin(url: string): Observable<boolean> {
     /* if (this.loggedInService.isLoggedIn) {
