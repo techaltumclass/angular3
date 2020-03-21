@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'blogs',
     loadChildren: './Blog/blog.module#BlogModule',
-    canLoad: [canLoadService]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

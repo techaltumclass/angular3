@@ -9,15 +9,18 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   newBlogUrl = '/create-new-blog';
   @Input() blogTitle = 'this is blog title';
+  isLoggedIn: boolean;
 
   constructor(private readonly router: Router) { }
 
   ngOnInit() {
+    this.isLoggedIn = window.localStorage.getItem("isLoggedIn") === 'true' ? true : false;
   }
 
-  onClick(): void {
-    console.log('clicked.')
-    this.router.navigate(['/create-new-blog']);
+  logout(): void {
+    window.localStorage.setItem("isLoggedIn", 'false');
+    window.localStorage.setItem("userID", null);
+    this.router.navigate(['/login']);
   }
 
 }

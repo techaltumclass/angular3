@@ -16,21 +16,28 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginStatus = false;
   pachakges: any;
+  retUrl: string;
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedIn.asObservable();
   constructor(
     private readonly formbuilder: FormBuilder,
     private readonly router: Router,
-    private readonly service: UserService
+    private readonly service: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.getPackages();
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParamMap
+      .subscribe(params => {
+        this.retUrl = params.get('retUrl');
+      });
 
     this.lgForm = this.formbuilder.group({
       email: ["", Validators.required],
       password: ["", [Validators.required, Validators.minLength(6)]],
+      companyID: [2]
     });
   }
   get fval() {
@@ -42,15 +49,17 @@ export class LoginComponent implements OnInit {
     if (this.lgForm.invalid) {
       return;
     }
-    this.service.login(this.lgForm.value).subscribe((res:APIResponse) => {
-      if(res.IsSuccess){
+    this.lgForm.patchValue({ companyID: 2 });
+    this.service.login(this.lgForm.value).subscribe((res: APIResponse) => {
+      if (res.IsSuccess) {
         this.isLoggedIn.next(true);
         window.localStorage.setItem("isLoggedIn", 'true');
         window.localStorage.setItem("userID", res.SingleResult.ID);
+        this.router.navigate(['/blogs']);
       } else {
         window.localStorage.setItem("isLoggedIn", 'false')
+        return;
       }
-      this.router.navigateByUrl("/");
     })
   }
 

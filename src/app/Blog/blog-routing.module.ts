@@ -7,19 +7,19 @@ import { AuthGuard } from '../core/auth.guard';
 
 const routes: Routes = [
     {
-        path: "",
+        path: '',
         component: BlogComponent,
-    },
-    {
-        path: "blogs/blogDetails/:id",
-        component: BlogDetailsComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: "blogs/create-new-blog",
-        component: CreateBlogComponent,
-        canActivate: [AuthGuard]
-        
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: 'blogDetails',
+                component: BlogDetailsComponent
+            },
+            {
+                path: 'create-new-blog',
+                component: CreateBlogComponent
+            }
+        ]
     }
 
 ];

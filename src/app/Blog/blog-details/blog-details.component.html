@@ -1,36 +1,36 @@
 <!-- <app-header></app-header> -->
+<br>
+<div style="padding-top: 20px;"></div>
+<!--================Blog Area =================-->
 
- <!--================Blog Area =================-->
+<div class="card mb-3" style="max-width: 540px;">
 
-    <div class="card mb-3" style="max-width: 540px;">
-     
-            <div class="row no-gutters">
-              <div class="col-md-3">
-                <img (click)="clickImage()" [src]= "blogDetail.thumbnailImageUrl"class="card-img-top" style="margin-left: 4px; margin-top :4px;" >
-              </div>
-              <div class="col-md-10">
-                <div class="card-body">
-                    <h1>User Profile</h1>
-                    <h6>User Name</h6>
-                    <input [(ngModel)]="blogDetail.name"> 
-                  <h6>TITLE</h6>
-                  <input [(ngModel)]="blogDetail.title"> 
-                  <h6> DESCRIPTION</h6>
-                  <input [(ngModel)]="blogDetail.description"> 
-                  <h6> SUBTITLE</h6>
-                  <input [(ngModel)]="blogDetail.subtitle"> 
-                  <h6>DATE</h6>
-                  <p class="card-text">{{blogDetail. createdDate || ""}}</p>
-                  <p class="card-text">{{blogDetail.createdby || ""}}</p>
-               
-                  </div>
-                  {{ blogDetail | json}}
-              </div>
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <img (click)="clickImage()" [src]="blogDetail.thumbnailImageUrl" class="card-img-top" style="margin-left: 4px; margin-top :4px;">
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h1>User Profile</h1>
+                <h6>User Name</h6>
+                <input [(ngModel)]="blogDetail.name">
+                <h6>TITLE</h6>
+                <input [(ngModel)]="blogDetail.title">
+                <h6> DESCRIPTION</h6>
+                <input [(ngModel)]="blogDetail.description">
+                <h6> SUBTITLE</h6>
+                <input [(ngModel)]="blogDetail.subtitle">
+                <h6>DATE</h6>
+                <p class="card-text">{{blogDetail. createdDate || ""}}</p>
+                <p class="card-text">{{blogDetail.createdby || ""}}</p>
+
             </div>
-          </div>
+            {{ blogDetail | json}}
+        </div>
+    </div>
+</div>
 
-         
-    
+
+
 
 <!-- <app-footer></app-footer> -->
-
