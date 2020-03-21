@@ -26,6 +26,7 @@ export class CreateBlogComponent implements OnInit {
   model: NgModel;
   id: string;
   submitted = false;
+  value: any;
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly service: BlogService,
@@ -49,6 +50,10 @@ export class CreateBlogComponent implements OnInit {
       }
     });
     console.log(this.id);
+  }
+
+  getTextValue(event){
+    this.value = event;
   }
 
   createForm() {
