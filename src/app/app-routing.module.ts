@@ -19,11 +19,13 @@ export class canLoadService {
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "contact",
-    component: ContactComponent
+    component: ContactComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -35,8 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'blogs',
-    loadChildren: './Blog/blog.module#BlogModule',
-    canActivate: [AuthGuard]
+    loadChildren: './Blog/blog.module#BlogModule'
   },
   {
     path: '**',

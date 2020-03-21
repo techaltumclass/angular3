@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   loginStatus = false;
   pachakges: any;
   retUrl: string;
-  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedIn$: Observable<boolean> = this.isLoggedIn.asObservable();
+
   constructor(
     private readonly formbuilder: FormBuilder,
     private readonly router: Router,
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit {
     this.lgForm.patchValue({ companyID: 2 });
     this.service.login(this.lgForm.value).subscribe((res: APIResponse) => {
       if (res.IsSuccess) {
-        this.isLoggedIn.next(true);
+        this.service.isLoggedIn.next(true);
         window.localStorage.setItem("isLoggedIn", 'true');
         window.localStorage.setItem("userID", res.SingleResult.ID);
         this.router.navigate(['/blogs']);

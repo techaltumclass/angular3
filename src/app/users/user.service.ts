@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class UserService {
-  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: BehaviorSubject<any> = new BehaviorSubject<any>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedIn.asObservable();
   redirectUrl: string;
   baseUrl: string = 'http://localhost:65114/api/users/';
