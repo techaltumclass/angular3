@@ -18,7 +18,7 @@ export class BlogService {
 
   }
 
-  getBlogsData(): any {
+  getBlogsData(): Observable<any> {
     return this.http.get(this.baseUrl + 'services/data')
       .pipe(map((x: APIResponse) => {
         console.log(x);

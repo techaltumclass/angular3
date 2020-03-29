@@ -3,11 +3,11 @@
 <!--================Home Banner Area =================-->
 <section class="home_banner_area">
     <div class="overlay"></div>
-    <div  class="banner_inner d-flex align-items-center">
+    <div class="banner_inner d-flex align-items-center">
         <div class="container">
             <div class="banner_content row">
                 <div class="offset-lg-2 col-lg-8">
-                    <h3 #titleEl [ngClass]="{'activeClass': isAllowed}" >{{ pageTitle }}</h3>
+                    <h3 #titleEl [ngClass]="{'activeClass': isAllowed}">{{ pageTitle }}</h3>
                     <p (click)="onClickHeading($event)">{{ eventValue | json }}</p>
                     <a class="white_bg_btn" href="#" (click)="showAlert($event)">View Collection</a>
                 </div>
@@ -21,15 +21,15 @@
 <section class="blog_categorie_area">
     <div class="container">
         <div class="row">
-<div *ngIf="isError"> <span> There is error</span></div>
-                <div *ngFor="let blog of myBlogs" class="col-lg-3" style="text-align: center; margin-bottom: 15px;">
-             
+            <div *ngIf="isError"> <span> There is error</span></div>
+            <div *ngFor="let blog of myBlogs" class="col-lg-3" style="text-align: center; margin-bottom: 15px;">
+
                 <div class="categories_post">
-              
+
                     <img [src]="blog.ImageUrl" alt="blog.title" style="height:200px; width: 320px;">
                     <div class="categories_details">
                         <div class="categories_text">
-                                <a (click)="gotoDetails(blog.id)" >
+                            <a (click)="gotoDetails(blog.id)">
                                 <h5>{{blog.Name}}</h5>
                             </a>
                             <div class="border_line"></div>
@@ -39,15 +39,15 @@
                 </div>
                 <br/>
                 <div style="justify-content: space-between; display: flex;">
-                  <a routerLink="blogs/blogDetails/{{blog.ID}}" routerLinkActive="active">
-                        <button type="button"  class="btn submit_btn">View</button>
-                     </a> 
+                    <a routerLink="blogs/blogDetails/{{blog.ID}}" routerLinkActive="active">
+                        <button type="button" class="btn submit_btn">View</button>
+                    </a>
 
                 </div>
             </div>
-           
+
         </div>
-        
+
     </div>
 </section>
 

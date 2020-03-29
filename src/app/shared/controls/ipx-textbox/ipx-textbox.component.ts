@@ -6,24 +6,24 @@ import { ControlValueAccessor } from '@angular/forms';
   templateUrl: './ipx-textbox.component.html',
   styleUrls: ['./ipx-textbox.component.scss']
 })
-export class IpxTextboxComponent implements OnInit {
+export class IpxTextboxComponent implements OnInit, ControlValueAccessor {
 
   @Output() changeEv = new EventEmitter<any>();
   value: any;
   constructor() { }
-
-  // writeValue(obj: any): void {
-  //   throw new Error("Method not implemented.");
-  // }
-  // registerOnChange(fn: any): void {
-  //   throw new Error("Method not implemented.");
-  // }
-  // registerOnTouched(fn: any): void {
-  //   throw new Error("Method not implemented.");
-  // }
-  // setDisabledState?(isDisabled: boolean): void {
-  //   throw new Error("Method not implemented.");
-  // }
+  
+  writeValue(obj: any): void {
+    throw new Error("Method not implemented.");
+  }
+  registerOnChange(fn: any): void {
+    throw new Error("Method not implemented.");
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error("Method not implemented.");
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    throw new Error("Method not implemented.");
+  }
 
   ngOnInit() {
     this.value = {

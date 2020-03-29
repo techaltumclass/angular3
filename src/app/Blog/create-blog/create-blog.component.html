@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <textarea class="form-control" formControlName="description" rows="1" placeholder="Enter Message"></textarea>
                         </div>
-                        <ipx-textbox (changeEv)="getTextValue($event)"></ipx-textbox>
+                        <ipx-textbox [(ngModel)]="value"></ipx-textbox>
                         Model Value: {{ value | json}}
                     </div>
 
