@@ -5,16 +5,19 @@ import uuidv1 from "uuid/v1";
 import { HttpClient } from '@angular/common/http';
 import { throwError, fromEvent, of, Observable } from 'rxjs';
 import { catchError, tap, switchMap, mergeMap, concatMap, exhaustMap, map } from 'rxjs/operators';
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BlogService {
   myvariable: string;
-  baseUrl: string = 'http://localhost:65114/api/';
+  baseUrl = environment.url;
+
   constructor(private http: HttpClient) { }
   
   submitBlog(blog: Blog): Observable<any> {
 
-    return this.http.post('http://localhost:65114/api/bookings/add', blog);
+    return this.http.post(this.baseUrl + 'bookings/add', blog);
 
   }
 

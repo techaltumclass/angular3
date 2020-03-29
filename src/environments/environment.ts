@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://health-iq.in/'
+  url: 'http://localhost:65114/api/'
 };
 
 /*

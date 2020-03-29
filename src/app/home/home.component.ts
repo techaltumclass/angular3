@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   myBlogs: Blog[];
   isAllowed: string;
   isError = false;
+  imageUrl = '../../assets/img/services images/pathology.jpg';
+  styleName='Pathalogy';
 
   @ViewChild('titleEl', { static: true }) title: ElementRef;
 

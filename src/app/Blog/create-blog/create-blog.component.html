@@ -9,7 +9,7 @@
                 <form [formGroup]="myblogForm" (ngSubmit)="createNewBlog()" class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" formControlName="name" [(ngModel)]="blogName" (change)="changeValue()" placeholder="Enter Name" [ngClass]="{'ng-touched': submitted }" />
+                            <input type="text" class="form-control" formControlName="name" [(ngModel)]="blogName" (change)="changeValue($event)" placeholder="Enter Name" [ngClass]="{'ng-touched': submitted }" />
                             <!-- <div *ngIf="submitted && myblogForm.controls.name.errors" class="invalid-feedback"> </div> -->
                             <div *ngIf="submitted && myblogForm.controls.name.errors"> <span> Name is required </span></div>
                         </div>

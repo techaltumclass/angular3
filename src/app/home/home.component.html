@@ -1,4 +1,10 @@
 <app-header></app-header>
+<style>
+    .Pathalogy {
+        border: 2px solid darkred !important;
+    }
+</style>
+
 
 <!--================Home Banner Area =================-->
 <section class="home_banner_area">
@@ -29,7 +35,7 @@
                     <img [src]="blog.ImageUrl" alt="blog.title" style="height:200px; width: 320px;">
                     <div class="categories_details">
                         <div class="categories_text">
-                            <a (click)="gotoDetails(blog.id)">
+                            <a>
                                 <h5>{{blog.Name}}</h5>
                             </a>
                             <div class="border_line"></div>
@@ -45,7 +51,6 @@
 
                 </div>
             </div>
-
         </div>
 
     </div>
